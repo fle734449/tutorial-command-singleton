@@ -47,6 +47,7 @@ public class ChatClient implements Runnable{
 	    }
 
 	    // WHAT SHOULD YOU DO WITH THE COMMAND?
+	    c.execute();
 
 	}
     }

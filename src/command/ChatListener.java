@@ -43,19 +43,25 @@ public class ChatListener implements Runnable {
 		// CREATE NEW BeepCommand object
 		// what should you do with it after it's created?
 		// hint: don't just go executing it. Why not?
-
+	    	Speaker s = Speaker.getInstance();
+	    	SpeakerBeepCommand beepCommand = new SpeakerBeepCommand(s);
+	    	chatClient.enqueueCommand(beepCommand);
+	    
 	    }
 	    else if(fromServer.equals("VIBRATE")){
-
 		// CREATE NEW VibrateCommand object
-
+	    	VibrationMotor v = VibrationMotor.getInstance();
+	    	MotorVibrateCommand vibrateCommand = new MotorVibrateCommand(v);
+	    	chatClient.enqueueCommand(vibrateCommand);
 	    }
 	    else{
 		
 		// CREATE NEW ConsoleCommand object
 		// You'll have to do something slightly different here since you
 		// need to print the string fromServer
-
+	    	Console c = Console.getInstance();
+	    	ConsoleCommand consoleCommand = new ConsoleCommand(c, fromServer);
+	    	chatClient.enqueueCommand(consoleCommand);
 	    }
 	    try{
 		fromServer = in.readLine();
